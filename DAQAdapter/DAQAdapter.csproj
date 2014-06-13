@@ -47,7 +47,10 @@
     <Reference Include="VIBlend.WinForms.Utilities, Version=8.0.0.0, Culture=neutral, PublicKeyToken=970a5af59bc48043" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapter.cs" />
+    <Compile Include="Adapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommonData.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -79,6 +82,7 @@
     <EmbeddedResource Include="SerialPort.resx">
       <DependentUpon>SerialPort.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

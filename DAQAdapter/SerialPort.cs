@@ -10,7 +10,6 @@ namespace DAQAdapter
     public class _ComPort:SerialPort
     {
         private System.ComponentModel.IContainer components;
-
         private void InitializeComponent()
         {
 
