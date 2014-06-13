@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort3 = new System.IO.Ports.SerialPort(this.components);
@@ -36,18 +37,21 @@
             this.process1 = new System.Diagnostics.Process();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.cOM4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOM3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOM2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOM1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.vProgressBar1 = new VIBlend.WinForms.Controls.vProgressBar();
+            this.vProgressBar2 = new VIBlend.WinForms.Controls.vProgressBar();
+            this.tcpServer1 = new DAQAdapter.TcpServer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,19 +103,11 @@
             this.toolStripStatusLabel6,
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel8});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 275);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 583);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(785, 25);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Italic);
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(100, 20);
-            this.toolStripStatusLabel1.Text = "ComStatus--";
             // 
             // toolStripSplitButton1
             // 
@@ -156,11 +152,27 @@
             this.cOM1ToolStripMenuItem.Text = "COM1";
             this.cOM1ToolStripMenuItem.Click += new System.EventHandler(this.cOM1ToolStripMenuItem_Click);
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Italic);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(100, 20);
+            this.toolStripStatusLabel1.Text = "ComStatus--";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(133, 20);
             this.toolStripStatusLabel3.Text = "SOCKET STATUS:";
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Red;
+            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Italic);
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(76, 20);
+            this.toolStripStatusLabel4.Text = "Closed!--";
             // 
             // toolStripStatusLabel5
             // 
@@ -190,19 +202,47 @@
             this.toolStripStatusLabel8.Size = new System.Drawing.Size(57, 20);
             this.toolStripStatusLabel8.Text = "5001--";
             // 
-            // toolStripStatusLabel4
+            // vProgressBar1
             // 
-            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Red;
-            this.toolStripStatusLabel4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Italic);
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(76, 20);
-            this.toolStripStatusLabel4.Text = "Closed!--";
+            this.vProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.vProgressBar1.Location = new System.Drawing.Point(49, 537);
+            this.vProgressBar1.Name = "vProgressBar1";
+            this.vProgressBar1.RoundedCornersMask = ((byte)(15));
+            this.vProgressBar1.Size = new System.Drawing.Size(677, 15);
+            this.vProgressBar1.TabIndex = 3;
+            this.vProgressBar1.Text = "vProgressBar1";
+            this.vProgressBar1.Value = 0;
+            this.vProgressBar1.VIBlendTheme = VIBlend.Utilities.VIBLEND_THEME.VISTABLUE;
+            // 
+            // vProgressBar2
+            // 
+            this.vProgressBar2.BackColor = System.Drawing.Color.Transparent;
+            this.vProgressBar2.Location = new System.Drawing.Point(49, 452);
+            this.vProgressBar2.Name = "vProgressBar2";
+            this.vProgressBar2.RoundedCornersMask = ((byte)(15));
+            this.vProgressBar2.Size = new System.Drawing.Size(677, 15);
+            this.vProgressBar2.TabIndex = 4;
+            this.vProgressBar2.Text = "vProgressBar2";
+            this.vProgressBar2.Value = 0;
+            this.vProgressBar2.VIBlendTheme = VIBlend.Utilities.VIBLEND_THEME.VISTABLUE;
+            // 
+            // tcpServer1
+            // 
+            this.tcpServer1.Encoding = ((System.Text.Encoding)(resources.GetObject("tcpServer1.Encoding")));
+            this.tcpServer1.IdleTime = 50;
+            this.tcpServer1.IsOpen = false;
+            this.tcpServer1.MaxCallbackThreads = 100;
+            this.tcpServer1.MaxSendAttempts = 3;
+            this.tcpServer1.Port = -1;
+            this.tcpServer1.VerifyConnectionInterval = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 300);
+            this.ClientSize = new System.Drawing.Size(785, 608);
+            this.Controls.Add(this.vProgressBar2);
+            this.Controls.Add(this.vProgressBar1);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("新宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -238,6 +278,9 @@
         private System.Windows.Forms.ToolStripMenuItem cOM2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cOM1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private VIBlend.WinForms.Controls.vProgressBar vProgressBar2;
+        private VIBlend.WinForms.Controls.vProgressBar vProgressBar1;
+        private TcpServer tcpServer1;
     }
 }
 

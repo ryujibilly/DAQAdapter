@@ -60,7 +60,10 @@
     <Compile Include="SerialPort.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TCPServer.cs" />
+    <Compile Include="tcpServer\TcpServer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="tcpServer\TcpServerConnection.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SerialPort.resx">
+      <DependentUpon>SerialPort.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
